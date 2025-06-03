@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: #f8f8f8;
+        }
+        .profile-container {
+            padding: 40px 48px 32px 48px;
+            min-width: 400px;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: rgba(255, 255, 255, 0.7); 
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .profile-header {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        .profile-header h2 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .profile-main {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 32px;
+            flex: 1;
+        }
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex: 1;
+            margin-top: 125px;
+        }
+        .profile-details span {
+            margin: 6px 0;
+            font-size: 18px;
+        }
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 0;
+            flex-shrink: 0;
+        }
+        .logout-link {
+            margin-top: 100px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            align-self: center;
+        }
+        .logout-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+        </div>
+        <div class="profile-main">
+            <div class="profile-details">
+                <span>Name: {{ user['name'] }}</span>
+                <span>Birthday: {{ user['birthday'] }}</span>
+                <span>Address: {{ user['address'] }}</span>
+            </div>
+            {% if user['image'] %}
+                <img src="/{{ user['image'] }}" alt="Profile Image" class="profile-image">
+            {% endif %}
+        </div>
+        <a href="/logout" class="logout-link">Logout</a>
+    </div>
+</body>
+</html>
